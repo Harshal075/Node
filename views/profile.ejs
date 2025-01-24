@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile Page</title>
+</head>
+<body>
+    <%- include('common/header.ejs') %>
+    <h1>Hello <%= data.name %></h1>
+    <h2>Mail : <%= data.email%></h2>
+    <h2>Age : <%= data.age%></h2>
+
+    <ul>
+        <% data.skills.forEach((item)=>{%>
+            <li><%= item %></li> 
+        <%}) %>
+    </ul>
+    <%- include('common/footer.ejs') %>
+</body>
+</html>

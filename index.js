@@ -42,17 +42,17 @@ app.set('view engine' , 'ejs');
 // app.use(express.static(publicpath));
 // console.log(publicpath);
 
-app.get('',(req , res)=>{
-    res.sendFile(`${publicpath}/index.html`);
-})
+// app.get('',(req , res)=>{
+//     res.sendFile(`${publicpath}/index.html`);
+// })
 
-app.get('/about',(req , res)=>{
-    res.sendFile(`${publicpath}/about.html`);
-})
+// app.get('/about',(req , res)=>{
+//     res.sendFile(`${publicpath}/about.html`);
+// })
 
-app.get('/help',(req , res)=>{
-    res.sendFile(`${publicpath}/help.html`);
-})
+// app.get('/help',(req , res)=>{
+//     res.sendFile(`${publicpath}/help.html`);
+// })
 
 app.get('/profile' , (req , res)=>{
     data = {
@@ -66,6 +66,10 @@ app.get('/profile' , (req , res)=>{
 
 app.get('/contact' , (req , res)=>{
     res.render('contact');
+})
+
+app.get('/help',(req , res)=>{
+    res.render('help');
 })
 
 app.get('*',(req , res)=>{

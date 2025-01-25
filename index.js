@@ -104,8 +104,6 @@ app.get('*',(req , res)=>{
     res.sendFile(`${publicpath}/notFound.html`)
 })
 
-
-
 app.listen(4500);
 
 

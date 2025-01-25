@@ -1,7 +1,7 @@
 const dbConnect = require('../mongodb');
 
 const insert=async()=>{
-    const db = await dbConnect('Database1' , 'Products');
+    const db = await dbConnect('Database1' , 'Customers');
     const result = await db.insertMany(
         [
             {name:'Iphone 13' , price:80000 , os:'ios' , size:5.11},

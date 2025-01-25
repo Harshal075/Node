@@ -34,10 +34,18 @@
 
 const express = require('express');
 const path = require('path')
+const reqF = require('./middleware.js')
+
+
+
+const namefilter = reqF.namefilter;
+const reqfilter = reqF.reqFilter;
 const publicpath = path.join(__dirname , 'public')
+// console.log(reqF);
 
 const app = express();
 app.set('view engine' , 'ejs');
+
 
 // app.use(express.static(publicpath));
 // console.log(publicpath);
@@ -54,7 +62,27 @@ app.set('view engine' , 'ejs');
 //     res.sendFile(`${publicpath}/help.html`);
 // })
 
-app.get('/profile' , (req , res)=>{
+
+
+app.get('/' , (req , res)=>{
+    res.render('home');
+})
+
+// const reqFilter = (req , res , next)=>{
+//     if(!req.query.age)
+//     {
+//         res.send('Please Provide age in query param');
+//     }
+//     else{
+//         next();
+//     }
+// }
+
+// application level middleware
+// app.use(reqFilter);
+
+//apply middleware on single route
+app.get('/profile' ,namefilter ,(req , res)=>{
     data = {
         name:'Harshal',
         email:'harshal@test.com',
@@ -64,7 +92,7 @@ app.get('/profile' , (req , res)=>{
     res.render('profile' , {data});
 })
 
-app.get('/contact' , (req , res)=>{
+app.get('/contact' ,reqfilter, (req , res)=>{
     res.render('contact');
 })
 
